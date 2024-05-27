@@ -7,6 +7,7 @@ import org.management.exceptions.IllegalArgumentExceptionDato;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class Evento {
@@ -32,9 +33,10 @@ public class Evento {
     //METODI
 
     private LocalDate validaData(LocalDate data)  throws DataEventoInvalidaException {
-        if (data == null ||data.isBefore(LocalDate.now())){
+        if (data == null ||data.isBefore(LocalDate.now()) ){
             throw new DataEventoInvalidaException("Impossibile impostare una data in passato.");
         }
+
         return data;
     }
 
@@ -44,6 +46,12 @@ public class Evento {
         }
         return nTotali;
     };
+
+    private String formData(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataFormattata = data.format(formatter);
+        return dataFormattata;
+    }
 
 //    public int prenota(int nPrenotazione){
 //        if(data.isAfter(LocalDate.now()) || nTotali < nPrenotati){
@@ -93,7 +101,11 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "titolo='" + titolo + '\'' + ", data=" + data ;
+        return "titolo='" + titolo + '\'' +
+                ", data=" + formData() +
+                ", nTotali=" + nTotali +
+                ", nPrenotati=" + nPrenotati +
+                '}';
     }
 
     //GETTER

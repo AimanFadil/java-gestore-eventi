@@ -3,6 +3,7 @@ package org.management;
 import org.management.exceptions.DataEventoInvalidaException;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -58,6 +59,8 @@ public class Main {
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
+        }catch (DateTimeParseException e){
+            System.out.println("Formato data non valido");
         }
 
 
