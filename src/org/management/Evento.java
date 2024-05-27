@@ -111,6 +111,7 @@ public class Evento {
     //GETTER
 
     public String getTitolo() {
+
         return titolo;
     }
 
