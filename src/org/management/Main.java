@@ -58,7 +58,7 @@ public class Main {
         } catch (DataEventoInvalidaException e){
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e){
-                System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }catch (DateTimeParseException e){
             System.out.println("Formato data non valido");
         }
